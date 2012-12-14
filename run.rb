@@ -3,11 +3,12 @@ require 'watir-webdriver'
 require 'net/http'
 require 'json'
 require 'yaml'
+require 'date'
 
 
 key = YAML.load_file('keys.yml')["consumer_key"]
 
-print "Type in your search term: "
+print "What would you like to hear about: "
 search_term = gets.chomp
 print "What language do you like? Describe it using two (or more, if you want Chinese) letters. (Examples that work nicely: es, pl, it, la, de, ar, fr, hu, sv, ja, ko, zh-TW: "
 language = gets.chomp
@@ -36,8 +37,14 @@ end
 
 translate_request_url = 'http://translate.google.com/#auto/' + language + '/' + URI.escape(doc_title + ". " + doc_abstract)
 
-$rain = Watir::Browser.new(:firefox)
-$rain.goto('http://www.rainymood.com/')
+$background = Watir::Browser.new(:firefox)
+$background.window.resize_to(0, 0)
+
+if Date.today.mon == 12
+  $background.goto('http://www.funvid.hu/index.php?page=videos&section=view&vid_id=101456')
+else
+  $background.goto('http://www.rainymood.com/')
+end
 
 $b = Watir::Browser.new(:firefox)
 
@@ -56,8 +63,8 @@ puts "Say something once you're done with listening... "
 bye1 = gets.chomp
 
 $b.close
-$rain.goto('http://heeeeeeeey.com/')
+$background.goto('http://heeeeeeeey.com/')
 
 puts "Yeah Boiiiiii!"
 bye2 = gets.chomp
-$rain.close
+$background.close
