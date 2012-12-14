@@ -8,4 +8,4 @@ language of choice, by google translate's invisible robot.
 
 Mendeley(OAPI) catalog search -> Google Translate -> ? -> Profit
 
-This requires a bunch of ruby , and Flash. I'm not sorry.
+This requires a bunch of ruby gems, and Flash. I'm not sorry.
